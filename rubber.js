@@ -1,26 +1,28 @@
-class Rubber {
-  constructor(x, y) {
-    var options = {
-        'restitution':0.3,
-        'friction':5,
-        'density':1
-    }
-    this.body = Bodies.rectangle(x, y,50,50 , options);
-    this.width = 50;
-    this.height =50;
-    
-    World.add(world, this.body);
-  }
-  display(){
-    var pos =this.body.position;
-    
-    var angle = this.body.angle;
-    push();
-    translate(pos.x, pos.y);
-    rotate(angle);
-    rectMode(CENTER);
-    fill("pink");
-    rect(0, 0, this.width, this.height);
-    pop();
-  }
+class Rubber{
+	constructor(x,y,r)
+	{
+		var options={
+			restitution:0.3,
+			friction:5,
+			density:1
+		}
+		this.x=x;
+		this.y=y;
+		this.r=r
+		this.body=Bodies.circle(this.x, this.y, (this.r-20)/2, options)
+		World.add(world, this.body);
+
+	}
+	display()
+	{
+			var rubberpos=this.body.position;		
+			push()
+			translate(rubberpos.x, rubberpos.y);
+			rectMode(CENTER)
+			strokeWeight(4);
+			stroke("black");
+			fill("darkblue");
+			ellipse(0,0,this.r, this.r);
+			pop()
+	}
 };
